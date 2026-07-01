@@ -4,6 +4,8 @@ A tiny LAN web front-end for sending faxes through the Epson `EPSON_FAX2` CUPS
 queue (ET‑5180 PC‑Fax). Upload a PDF, type a fax number, hit send. Shared‑password
 gated, meant for a **trusted LAN** — not the public internet.
 
+![faxweb — compose panel with country-code phone validation, live PDF preview, and recent-fax history](docs/screenshot.png)
+
 It's a single `app.py` (Flask, templates inline) so it copies to any host easily.
 
 ```
