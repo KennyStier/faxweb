@@ -1,0 +1,25 @@
+[Unit]
+Description=faxweb — LAN fax upload front-end for the EPSON_FAX2 CUPS queue
+After=network-online.target cups.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adjust user/paths to wherever you deploy on the homeserver.
+User=faxweb
+Group=lp
+WorkingDirectory=/opt/faxweb
+EnvironmentFile=/etc/faxweb.env
+ExecStart=/opt/faxweb/.venv/bin/python /opt/faxweb/app.py
+Restart=on-failure
+RestartSec=3
+
+# Hardening (loosen if it breaks something on your distro)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/faxweb/data
+
+[Install]
+WantedBy=multi-user.target
